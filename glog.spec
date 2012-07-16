@@ -4,14 +4,13 @@
 %define libglog_static_devel %mklibname glog -d -s
 
 Name:      glog
-Version:   0.3.1
-Release:   %mkrel 1
+Version:   0.3.2
+Release:   1
 
 License:   BSD
 URL:       http://code.google.com/p/google-glog/
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
-Source0:   http://google-glog.googlecode.com/files/%{name}-%{version}-1.tar.gz
+Source0:   http://google-glog.googlecode.com/files/%{name}-%{version}.tar.gz
 
 #------------------------------------------------------------------------------#
 
@@ -38,7 +37,6 @@ The glog library implements application-level logging. This library provides
 logging APIs based on C++-style streams and various helper macros.
 
 %files -n %{libglog}
-%defattr(-,root,root)
 %{_libdir}/libglog.so.%{major}
 %{_libdir}/libglog.so.%{major}.*
 
@@ -56,9 +54,7 @@ Provides: lib%{name}-devel = %{version}-%{release}
 Development files for %{libglog}
 
 %files -n %{libglog_devel}
-%defattr(-,root,root)
 %{_libdir}/libglog.so
-%{_libdir}/libglog.la
 %{_libdir}/pkgconfig/libglog.pc
 %{_includedir}/glog
 %{_datadir}/doc/%{name}-%{version}
@@ -77,7 +73,6 @@ Provides: lib%{name}-static-devel = %{version}-%{release}
 Static development files for %{libglog}
 
 %files -n %{libglog_static_devel}
-%defattr(-,root,root)
 %{_libdir}/libglog.a
 
 #------------------------------------------------------------------------------#
@@ -93,5 +88,3 @@ Static development files for %{libglog}
 rm -rf %{buildroot}
 %makeinstall_std
 
-%clean
-rm -rf %{buildroot}
