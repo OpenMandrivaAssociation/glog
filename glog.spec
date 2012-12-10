@@ -88,3 +88,14 @@ Static development files for %{libglog}
 rm -rf %{buildroot}
 %makeinstall_std
 
+
+
+%changelog
+* Mon Jul 16 2012 Alexander Khrukin <akhrukin@mandriva.org> 0.3.2-1
++ Revision: 809798
+- version update 0.3.2
+
+* Tue Feb 22 2011 Paulo Ricardo Zanoni <pzanoni@mandriva.com> 0.3.1-1
++ Revision: 639254
+- imported package glog
+
