@@ -5,7 +5,7 @@
 
 Name:      glog
 Version:   0.3.2
-Release:   1
+Release:   2
 
 License:   BSD
 URL:       http://code.google.com/p/google-glog/
