@@ -1,23 +1,20 @@
-%define major 0
-%define libglog %mklibname glog %major
+%define major 1
+%define libglog %mklibname glog
 %define libglog_devel %mklibname glog -d
-%define libglog_static_devel %mklibname glog -d -s
 
 Name:      glog
-Version:   0.3.2
-Release:   2
+Version:   0.6.0
+Release:   1
 
 License:   BSD
-URL:       http://code.google.com/p/google-glog/
-
-Source0:   http://google-glog.googlecode.com/files/%{name}-%{version}.tar.gz
-
-#------------------------------------------------------------------------------#
-
-# package glog
+URL:       https://github.com/google/glog
+Source0:   https://github.com/google/glog/archive/refs/tags/v%{version}.tar.gz
 
 Summary: Logging library for C++
 Group:   Development/C++
+
+BuildRequires:	cmake
+BuildRequires:	ninja
 
 %description
 The glog library implements application-level logging. This library provides
@@ -37,8 +34,7 @@ The glog library implements application-level logging. This library provides
 logging APIs based on C++-style streams and various helper macros.
 
 %files -n %{libglog}
-%{_libdir}/libglog.so.%{major}
-%{_libdir}/libglog.so.%{major}.*
+%{_libdir}/libglog.so.*
 
 #------------------------------------------------------------------------------#
 
@@ -57,45 +53,14 @@ Development files for %{libglog}
 %{_libdir}/libglog.so
 %{_libdir}/pkgconfig/libglog.pc
 %{_includedir}/glog
-%{_datadir}/doc/%{name}-%{version}
-
-#------------------------------------------------------------------------------#
-
-%package -n %{libglog_static_devel}
-
-Summary: Static development files for %{libglog}
-Group:   Development/C++
-
-Requires: %{libglog_devel} = %{version}
-Provides: lib%{name}-static-devel = %{version}-%{release}
-
-%description -n %{libglog_static_devel}
-Static development files for %{libglog}
-
-%files -n %{libglog_static_devel}
-%{_libdir}/libglog.a
-
-#------------------------------------------------------------------------------#
+%{_libdir}/cmake/glog
 
 %prep
-%setup -q
+%autosetup -p1
+%cmake -G Ninja
 
 %build
-%configure2_5x
-%make
+%ninja_build -C build
 
 %install
-rm -rf %{buildroot}
-%makeinstall_std
-
-
-
-%changelog
-* Mon Jul 16 2012 Alexander Khrukin <akhrukin@mandriva.org> 0.3.2-1
-+ Revision: 809798
-- version update 0.3.2
-
-* Tue Feb 22 2011 Paulo Ricardo Zanoni <pzanoni@mandriva.com> 0.3.1-1
-+ Revision: 639254
-- imported package glog
-
+%ninja_install -C build
