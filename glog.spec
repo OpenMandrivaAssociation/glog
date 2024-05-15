@@ -51,7 +51,7 @@ Development files for %{libglog}
 
 %files -n %{libglog_devel}
 %{_libdir}/libglog.so
-%{_libdir}/pkgconfig/libglog.pc
+#{_libdir}/pkgconfig/libglog.pc
 %{_includedir}/glog
 %{_libdir}/cmake/glog
 
