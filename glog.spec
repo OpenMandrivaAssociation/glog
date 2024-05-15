@@ -3,7 +3,7 @@
 %define libglog_devel %mklibname glog -d
 
 Name:      glog
-Version:   0.6.0
+Version:   0.7.0
 Release:   1
 
 License:   BSD
