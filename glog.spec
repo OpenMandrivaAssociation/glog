@@ -8,7 +8,7 @@ Release:   1
 
 License:   BSD
 URL:       https://github.com/google/glog
-Source0:   https://github.com/google/glog/archive/refs/tags/v%{version}.tar.gz
+Source0:   https://github.com/google/glog/archive/refs/tags/v%{version}/%{name}-%{version}.tar.gz
 
 Summary: Logging library for C++
 Group:   Development/C++
