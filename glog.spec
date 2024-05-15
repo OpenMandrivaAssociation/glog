@@ -51,13 +51,14 @@ Development files for %{libglog}
 
 %files -n %{libglog_devel}
 %{_libdir}/libglog.so
-#{_libdir}/pkgconfig/libglog.pc
+%{_libdir}/pkgconfig/libglog.pc
 %{_includedir}/glog
 %{_libdir}/cmake/glog
 
 %prep
 %autosetup -p1
-%cmake -G Ninja
+%cmake -DWITH_PKGCONFIG:BOOL=ON \
+       -G Ninja
 
 %build
 %ninja_build -C build
